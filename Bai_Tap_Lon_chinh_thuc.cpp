@@ -274,6 +274,7 @@ void DanhSach::XoaID()
 	if (tim == 0)
 	{
 		cout << "\nKhong tim thay ma so nay !!";
+		cout<<endl;
 	}
 }
 // Cap Nhat Thong Tin Theo Ma So
@@ -300,7 +301,7 @@ void DanhSach::CapNhat()
 	{
 		tim=0;
 		cout << "\nKhong tim thay ma so nay";
-        cout<<endl;
+                cout<<endl;
 		}
 	}
 }
