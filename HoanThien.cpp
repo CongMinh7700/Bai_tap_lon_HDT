@@ -439,7 +439,7 @@ int main()
 		cout << "**  2. Xuat Danh Sach Hoc Sinh                       **\n";
 		cout << "**  3. Xoa Theo Ma So Hoc Sinh                       **\n";
 		cout << "**  4. Cap Nhat Thong Tin Theo Ma So                 **\n";
-		cout << "**  5. Sap Xep Hoc Sinh Theo Ten.                    **\n";
+		cout << "**  5. Sap Xep Hoc Sinh Theo Ma So           ;        **\n";
 		cout << "**  6. Tim Ten Hoc Sinh.                             **\n";
 		cout << "**  7. Tim Ma So Hoc Sinh                            **\n";
 		cout << "**  8. Ghi Danh Dach Hoc Sinh vao file.              **\n";
