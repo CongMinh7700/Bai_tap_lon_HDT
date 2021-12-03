@@ -114,6 +114,7 @@ class DanhSach
 	void TimMaSo();
 	void GhiFile(char *Ttep);
 	void DocFile(char *Ttep);
+	bool check();
 };
 
 //Nhap diem
@@ -222,13 +223,35 @@ void DanhSach::NhapDS()
 	cin >> n;
 	for (int i = 0; i < n; i++)
 	{
+	
 		cout << "\nNhap Hoc Sinh thu " << i + 1 << ":" << endl;
 		a = new HocSinh;
+		HS.push_back(a);	
 		a->Nhap();
-		HS.push_back(a);
+			if(check() == true)
+		{
+			cout << "\nMSSV bi trung vui long nhap lai";
+			i--;
+			HS.at(i)->Nhap();
+		}
 		cout << endl;
 	}
 }
+bool DanhSach::check( )
+{
+	for(int i = 0; i < HS.size(); i++)
+	{
+		for(int j=1;j<HS.size();j++){
+		if(HS.at(i)->getMS()== HS.at(j)->getMS())
+		{
+			return true;
+		}
+	}
+	}
+	return false;
+}
+
+
 //Xuat Danh Sach
 void DanhSach::XuatDS()
 {
@@ -386,7 +409,7 @@ void DanhSach::TimMaSo()
 void DanhSach::GhiFile(char *Ttep)
 {
 	ofstream f;
-	f.open(Ttep, ios::out);
+	f.open(Ttep, ios::app);
 	if (f.bad())
 	{
 		cout << "\nTep " << Ttep << "khong ton tai ";
@@ -398,12 +421,14 @@ void DanhSach::GhiFile(char *Ttep)
 			f.open(Ttep);
 		}
 		else
+		{
 			exit(1);
+		}
 	}
-	f << setprecision(1) << setiosflags(ios::showpoint);
+	f << setprecision(3) << setiosflags(ios::showpoint);
 	f << "__________________________________________________________________________________________________________________________________________________________________";
 	f << endl;
-	f << "STT" << setw(10) << "ten" << setw(10) << "namsinh" << setw(10) << "maso" << setw(10) << "lop" << setw(12) << "diachi" << setw(12) << "gioitinh" << setw(10) << "diemtoan" << setw(10) << "diemvan" << setw(10) << "diemly" << setw(10) << "diemhoa" << setw(10) << "DTB";
+	f << "STT" << setw(10) << "ten" << setw(10) << "namsinh" << setw(10) << "maso" << setw(10) << "lop" << setw(12) << "diachi" << setw(12) << "gioitinh" << setw(10) << "diemtoan" << setw(10) << "diemvan" << setw(10) << "diemly" << setw(10) << "diemhoa";
 	for (int i = 0; i < HS.size(); ++i)
 	{
 		f << endl;
@@ -504,12 +529,12 @@ int main()
 			ds.GhiFile("hocsinh.txt");
 			break;
 		case 0:
-			printf("\nBan da chon thoat chuong trinh!");
+			cout << "\nBan da chon thoat chuong trinh!";
 			getch();
 			return 0;
 		default:
-			printf("\nKhong co chuc nang nay!");
-			printf("\nVui long chon lai phim khac de tiep tuc!\n");
+			cout << "\nKhong co chuc nang nay!";
+			cout << "\nVui long chon lai phim khac de tiep tuc!\n";
 			getch();
 			break;
 		}
